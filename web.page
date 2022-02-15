@@ -1,0 +1,53 @@
+<html>
+<head>
+  <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js">
+</script>
+<script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.min.js">
+</script>
+</head>
+  <h1 style="background-color:pink" align="center">Colleges in wagholi</H1>
+<div ng-view></div>
+ <body>
+    <div ng-app = "mainApp">
+<p><a href ="#AT">AT College wagholi</a></p>
+<p><a href ="#FC">FC college Pune</a></p>
+<div ng-view></div>
+<script type ="text/ng-template" id ="at.html">
+<marquee><h1 style="background-color:powderblue;"> Welcome to AT college wagholi</h1></marquee>
+<p>Address:Bokori phata wagholi,
+<img src=atc.png>
+ BJS college, Pune, Maharashtra 411053</p>
+<p>Contact:</p>
+{{message}}
+</script>
+<script type ="text/ng-template" id ="fc.html">
+<marquee><h1 style="background-color:blue;"> Welcome to FC college Bhor</h1></marquee>
+<p>Address:Mahad road Rd,
+Laxmi Society, Model Colony, Shivajinagar, Pune, Maharashtra 411053</p>
+<p>Contact:</p>
+{{message}}
+</script>
+   <script>
+var mainApp = angular.module("mainApp", ['ngRoute']);
+mainApp.config(['$routeProvider', function($routeProvider)
+ {
+$routeProvider
+.when('/AT', {
+templateUrl: 'at.html',controller: 'atc'
+  })
+.when('/FC', {
+templateUrl: 'fc.html',controller: 'fc'
+  })
+ }]);
+mainApp.controller('atc', function($scope) 
+{
+$scope.message = "Welcome  to ATC";
+         });
+mainApp.controller('fc', function($scope) 
+{
+$scope.message = "Welcome  to Fc";
+         });
+             </script>
+      
+</body>
+</html>
